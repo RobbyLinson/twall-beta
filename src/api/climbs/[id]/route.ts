@@ -1,0 +1,51 @@
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
+
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const climb = await prisma.climb.findUnique({
+      where: { id: params.id },
+      include: {
+        reviews: {
+          include: {
+            user: {
+              select: {
+                username: true,
+                email: true,
+              },
+            },
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
+      },
+    });
+
+    if (!climb) {
+      return NextResponse.json({ error: "Climb not found" }, { status: 404 });
+    }
+
+    // Calculate average rating
+    const avgRating =
+      climb.reviews.length > 0
+        ? climb.reviews.reduce((sum, r) => sum + r.rating, 0) /
+          climb.reviews.length
+        : 0;
+
+    return NextResponse.json({
+      ...climb,
+      averageRating: Math.round(avgRating * 10) / 10,
+      reviewCount: climb.reviews.length,
+    });
+  } catch (error) {
+    console.error("Error fetching climb:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch climb" },
+      { status: 500 },
+    );
+  }
+}

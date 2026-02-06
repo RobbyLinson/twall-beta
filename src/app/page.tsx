@@ -119,7 +119,7 @@ export default function Home() {
             <div className="w-12 h-12 bg-trinity-blue-100 rounded-lg flex items-center justify-center mb-4">
               <Users className="h-6 w-6 text-trinity-blue-600" />
             </div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-trinity-blue-600 to-trinity-silver-600 bg-clip-text text-transparent mb-2">
+            <div className="text-4xl font-bold bg-linear-to-r from-trinity-blue-600 to-trinity-silver-600 bg-clip-text text-transparent mb-2">
               Community
             </div>
             <div className="text-trinity-silver-600 font-medium">

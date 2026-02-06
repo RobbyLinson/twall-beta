@@ -3,6 +3,8 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
   "/sign-up(.*)",
+  // Allow unauthenticated API access for climbs listing
+  "/api/climbs(.*)",
   "/",
   "/climbs(.*)", // Allow viewing climbs without login
 ]);
