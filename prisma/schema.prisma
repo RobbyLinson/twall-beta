@@ -25,21 +25,24 @@ model User {
 
 model Climb {
   id          String   @id @default(cuid())
-  name        String
-  grade       String   // e.g., "V4", "5.11a"
-  color       String?  // Wall color/holds
+  rope        String   // Letter: A, B, C, D, etc. (14 ropes = A-N)
+  color       String   // Color to identify route on that rope
+  grade       String   // e.g., "5.10a", "5.11b"
+  setter      String?  // Who set the route
   description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   
   reviews     Review[]
-} // Optional to add setter here at some point future developer
+  
+  @@unique([rope, color]) // Each rope+color combo is unique
+}
 
 model Review {
   id        String   @id @default(cuid())
   rating    Int      // 1-5 stars
   comment   String?
-  grade     String?  // User's opinion on grade (might differ from official)
+  suggestedGrade String? // User's opinion on grade (might differ from official)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
