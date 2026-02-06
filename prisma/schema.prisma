@@ -5,10 +5,49 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String   @unique
+  username  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  reviews   Review[]
+}
+
+model Climb {
+  id          String   @id @default(cuid())
+  name        String
+  grade       String   // e.g., "V4", "5.11a"
+  color       String?  // Wall color/holds
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  reviews     Review[]
+} // Optional to add setter here at some point future developer
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5 stars
+  comment   String?
+  grade     String?  // User's opinion on grade (might differ from official)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  climbId   String
+  climb     Climb    @relation(fields: [climbId], references: [id], onDelete: Cascade)
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([climbId, userId]) // One review per user per climb
 }
