@@ -26,7 +26,7 @@ export default async function ClimbDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-trinity-blue-50 via-white to-trinity-silver-50">
+    <div className="min-h-screen bg-linear-to-br from-trinity-blue-50 via-white to-trinity-silver-50">
       {/* Navigation */}
       <nav className="border-b border-trinity-silver-200 bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">

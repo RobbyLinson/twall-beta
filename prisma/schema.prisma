@@ -28,8 +28,6 @@ model Climb {
   rope        String   // Letter: A, B, C, D, etc. (14 ropes = A-N)
   color       String   // Color to identify route on that rope
   grade       String   // e.g., "5.10a", "5.11b"
-  setter      String?  // Who set the route
-  description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   

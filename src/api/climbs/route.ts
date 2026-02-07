@@ -47,15 +47,13 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { rope, color, grade, setter, description } = body;
+    const { rope, color, grade } = body;
 
     const climb = await prisma.climb.create({
       data: {
         rope: rope.toUpperCase(),
         color,
         grade,
-        setter,
-        description,
       },
     });
 

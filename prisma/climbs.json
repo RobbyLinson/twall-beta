@@ -1,0 +1,157 @@
+[
+  {
+    "rope": "A",
+    "color": "Green",
+    "grade": "5B"
+  },
+  {
+    "rope": "A",
+    "color": "White",
+    "grade": "6B+"
+  },
+  {
+    "rope": "B",
+    "color": "Blue",
+    "grade": "6B+"
+  },
+  {
+    "rope": "B",
+    "color": "Yellow",
+    "grade": "6C"
+  },
+  {
+    "rope": "C",
+    "color": "Orange",
+    "grade": "6B"
+  },
+  {
+    "rope": "C",
+    "color": "Green",
+    "grade": "7A"
+  },
+  {
+    "rope": "D",
+    "color": "Red",
+    "grade": "7C"
+  },
+  {
+    "rope": "D",
+    "color": "Black",
+    "grade": "7A"
+  },
+  {
+    "rope": "E",
+    "color": "Pink",
+    "grade": "5C"
+  },
+  {
+    "rope": "E",
+    "color": "Green",
+    "grade": "6B+"
+  },
+  {
+    "rope": "F",
+    "color": "Blue",
+    "grade": "6B"
+  },
+  {
+    "rope": "F",
+    "color": "Orange",
+    "grade": "7A+"
+  },
+  {
+    "rope": "G",
+    "color": "Gray",
+    "grade": "6A"
+  },
+  {
+    "rope": "G",
+    "color": "Green",
+    "grade": "6C+"
+  },
+  {
+    "rope": "H",
+    "color": "Pink",
+    "grade": "6A"
+  },
+  {
+    "rope": "H",
+    "color": "Yellow",
+    "grade": "6C"
+  },
+  {
+    "rope": "I",
+    "color": "Gray",
+    "grade": "6A+"
+  },
+  {
+    "rope": "I",
+    "color": "Black",
+    "grade": "6B"
+  },
+  {
+    "rope": "J",
+    "color": "Yellow",
+    "grade": "5A"
+  },
+  {
+    "rope": "J",
+    "color": "Blue",
+    "grade": "6A"
+  },
+  {
+    "rope": "K",
+    "color": "White",
+    "grade": "5C"
+  },
+  {
+    "rope": "K",
+    "color": "Gray",
+    "grade": "6C"
+  },
+  {
+    "rope": "L",
+    "color": "Yellow",
+    "grade": "5A"
+  },
+  {
+    "rope": "L",
+    "color": "Blue",
+    "grade": "5B"
+  },
+  {
+    "rope": "L",
+    "color": "Black",
+    "grade": "6B"
+  },
+  {
+    "rope": "M",
+    "color": "Green",
+    "grade": "4"
+  },
+  {
+    "rope": "M",
+    "color": "Red",
+    "grade": "5C"
+  },
+  {
+    "rope": "M",
+    "color": "Gray",
+    "grade": "6A+"
+  },
+  {
+    "rope": "N",
+    "color": "Yellow",
+    "grade": "3"
+  },
+  {
+    "rope": "N",
+    "color": "Blue",
+    "grade": "6B"
+  },
+  {
+    "rope": "N",
+    "color": "Blue",
+    "grade": "6B"
+  }
+]

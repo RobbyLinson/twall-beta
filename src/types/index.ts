@@ -3,8 +3,6 @@ export interface Climb {
   rope: string; // A, B, C, D, etc.
   color: string; // Red, Blue, Green, etc.
   grade: string;
-  setter?: string | null;
-  description?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
