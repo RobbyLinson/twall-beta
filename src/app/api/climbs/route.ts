@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { Review } from "@/types/index";
+import { Review, ClimbWithReviews } from "@/types/index";
 
 export async function GET() {
   try {
@@ -21,7 +21,7 @@ export async function GET() {
     });
 
     // Calculate average ratings
-    const climbsWithRatings = climbs.map((climb) => {
+    const climbsWithRatings = climbs.map((climb: ClimbWithReviews) => {
       const avgRating =
         climb.reviews.length > 0
           ? climb.reviews.reduce(
