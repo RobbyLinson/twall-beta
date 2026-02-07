@@ -34,7 +34,7 @@ export async function GET(
 
     const avgRating =
       climb.reviews.length > 0
-        ? climb.reviews.reduce((sum, r) => sum + r.rating, 0) /
+        ? climb.reviews.reduce((sum: number, r) => sum + r.rating, 0) /
           climb.reviews.length
         : 0;
 
