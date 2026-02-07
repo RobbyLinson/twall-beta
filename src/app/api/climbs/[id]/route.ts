@@ -1,13 +1,16 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
 ) {
+  const { id } = await params;
+
   try {
     const climb = await prisma.climb.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         reviews: {
           include: {
@@ -29,7 +32,6 @@ export async function GET(
       return NextResponse.json({ error: "Climb not found" }, { status: 404 });
     }
 
-    // Calculate average rating
     const avgRating =
       climb.reviews.length > 0
         ? climb.reviews.reduce((sum, r) => sum + r.rating, 0) /
