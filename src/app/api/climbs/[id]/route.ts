@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
+import { Review } from "@prisma/client";
 
 export async function GET(
   request: NextRequest,
@@ -34,7 +35,7 @@ export async function GET(
 
     const avgRating =
       climb.reviews.length > 0
-        ? climb.reviews.reduce((sum: number, r) => sum + r.rating, 0) /
+        ? climb.reviews.reduce((sum: number, r: Review) => sum + r.rating, 0) /
           climb.reviews.length
         : 0;
 
