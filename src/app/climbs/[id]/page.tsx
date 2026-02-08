@@ -17,9 +17,10 @@ async function getClimb(id: string) {
 export default async function ClimbDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const climb = await getClimb(params.id);
+  const { id } = await params;
+  const climb = await getClimb(id);
 
   if (!climb) {
     notFound();
