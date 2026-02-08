@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Mountain, Star, ArrowLeft, Calendar, User } from "lucide-react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import ReviewForm, { reviewForm } from "@/components/ReviewForm";
+import ReviewForm from "@/components/ReviewForm";
 
 async function getClimb(id: string) {
   const res = await fetch(
