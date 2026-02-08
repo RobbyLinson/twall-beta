@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Mountain, Star, ArrowLeft, Calendar, User } from "lucide-react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import ReviewForm, { reviewForm } from "@/components/ReviewForm";
 
 async function getClimb(id: string) {
   const res = await fetch(
@@ -127,9 +128,7 @@ export default async function ClimbDetailPage({
               <p className="text-trinity-blue-700 font-semibold mb-2">
                 Add Your Review
               </p>
-              <p className="text-sm text-trinity-silver-600">
-                Review form coming soon...
-              </p>
+              <ReviewForm climbId={climb.id} />
             </div>
           </SignedIn>
 

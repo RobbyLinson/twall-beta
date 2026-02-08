@@ -2,8 +2,15 @@ import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Mountain, Star, Users } from "lucide-react";
+import { prisma } from "@/lib/db";
 
-export default function Home() {
+async function getClimbCount() {
+  return prisma.climb.count();
+}
+
+export default async function Home() {
+  const climbCount = await getClimbCount();
+
   return (
     <div className="min-h-screen bg-linear-to-br from-trinity-blue-50 via-white to-trinity-silver-50">
       {/* Navigation */}
@@ -107,7 +114,7 @@ export default function Home() {
               <Star className="h-6 w-6 text-trinity-silver-600" />
             </div>
             <div className="text-4xl font-bold text-trinity-silver-600 mb-2">
-              ~40
+              {climbCount}
             </div>
             <div className="text-trinity-silver-600 font-medium">Routes</div>
             <p className="text-sm text-trinity-silver-500 mt-2">
