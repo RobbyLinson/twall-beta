@@ -20,6 +20,7 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [beta, setBeta] = useState("");
   const [suggestedGrade, setSuggestedGrade] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -44,6 +45,7 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
           climbId,
           rating,
           comment: comment.trim() || null,
+          beta: beta.trim() || null,
           suggestedGrade: suggestedGrade.trim() || null,
         }),
       });
@@ -115,6 +117,20 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          placeholder="Share your thoughts, review, or tips for this climb..."
+          rows={4}
+          className="mt-1"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="beta" className="text-trinity-silver-700">
+          Your Beta (optional)
+        </Label>
+        <Textarea
+          id="beta"
+          value={beta}
+          onChange={(e) => setBeta(e.target.value)}
           placeholder="Share your thoughts, beta, or tips for this climb..."
           rows={4}
           className="mt-1"

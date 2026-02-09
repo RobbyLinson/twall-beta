@@ -11,6 +11,7 @@ export interface Review {
   id: string;
   rating: number; // 1-5
   comment?: string | null;
+  beta?: string | null; // User's tips or advice for the climb
   suggestedGrade?: string | null; // User's opinion on the grade
   climbId: string;
   userId: string;

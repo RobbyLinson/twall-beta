@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Mountain, Star, ArrowLeft, Calendar, User } from "lucide-react";
+import { Mountain, Star, ArrowLeft } from "lucide-react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import ReviewForm from "@/components/ReviewForm";
+import ReviewsList from "@/components/ReviewList";
 
 async function getClimb(id: string) {
   const res = await fetch(
@@ -141,53 +142,7 @@ export default async function ClimbDetailPage({
               </p>
             </div>
           ) : (
-            <div className="space-y-4">
-              {climb.reviews.map((review: any) => (
-                <div
-                  key={review.id}
-                  className="border border-trinity-silver-200 rounded-lg p-4"
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <User className="h-5 w-5 text-trinity-silver-400" />
-                      <span className="font-semibold text-trinity-silver-700">
-                        {review.user.username ||
-                          review.user.email.split("@")[0]}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < review.rating
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-trinity-silver-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {review.comment && (
-                    <p className="text-trinity-silver-700 mb-2">
-                      {review.comment}
-                    </p>
-                  )}
-
-                  {review.suggestedGrade && (
-                    <p className="text-sm text-trinity-silver-500">
-                      Suggested grade: {review.suggestedGrade}
-                    </p>
-                  )}
-
-                  <div className="flex items-center gap-1 text-xs text-trinity-silver-400 mt-2">
-                    <Calendar className="h-3 w-3" />
-                    {new Date(review.createdAt).toLocaleDateString()}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ReviewsList reviews={climb.reviews} />
           )}
         </div>
       </main>

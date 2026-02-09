@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { climbId, rating, comment, suggestedGrade } = body;
+    const { climbId, rating, comment, beta, suggestedGrade } = body;
 
     // Validation
     if (!climbId || !rating) {
@@ -60,6 +60,7 @@ export async function POST(request: Request) {
       update: {
         rating,
         comment: comment || null,
+        beta: beta || null,
         suggestedGrade: suggestedGrade || null,
       },
       create: {
@@ -67,6 +68,7 @@ export async function POST(request: Request) {
         userId: dbUser.id,
         rating,
         comment: comment || null,
+        beta: beta || null,
         suggestedGrade: suggestedGrade || null,
       },
       include: {
