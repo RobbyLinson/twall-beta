@@ -3,16 +3,17 @@
 import { useToast } from "@/hooks/use-toast";
 
 export function Toaster() {
-  const { toasts } = useToast();
+  const { toasts, dismiss } = useToast();
 
   return (
-    <div className="fixed top-0 right-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:right-0 sm:top-0 sm:flex-col md:max-w-[420px]">
+    <div className="fixed top-0 right-0 z-100 flex max-h-screen w-full flex-col-reverse p-4 sm:right-0 sm:top-0 sm:flex-col md:max-w-105">
       {toasts.map(function ({
         id,
         title,
         description,
         action,
         variant,
+        open,
         ...props
       }) {
         return (
@@ -22,7 +23,7 @@ export function Toaster() {
               variant === "destructive"
                 ? "border-red-500 bg-red-50 text-red-900"
                 : "border-trinity-blue-200 bg-white"
-            }`}
+            } ${open === false ? "opacity-0 translate-y-2" : "opacity-100"}`}
             {...props}
           >
             <div className="grid gap-1">
@@ -32,6 +33,14 @@ export function Toaster() {
               )}
             </div>
             {action}
+            <button
+              type="button"
+              onClick={() => dismiss(id)}
+              className="absolute right-2 top-2 rounded p-1 text-gray-500 transition hover:text-gray-900"
+              aria-label="Dismiss toast"
+            >
+              ×
+            </button>
           </div>
         );
       })}

@@ -1,13 +1,15 @@
 import * as React from "react";
 
 const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 1000;
+const TOAST_REMOVE_DELAY = 10;
+const TOAST_AUTO_DISMISS_DELAY = 4000;
 
 type ToasterToast = {
   id: string;
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: React.ReactNode;
+  open?: boolean;
   variant?: "default" | "destructive";
 };
 
@@ -148,8 +150,13 @@ function toast({ ...props }: Toast) {
     toast: {
       ...props,
       id,
+      open: true,
     },
   });
+
+  setTimeout(() => {
+    dismiss();
+  }, TOAST_AUTO_DISMISS_DELAY);
 
   return {
     id: id,
