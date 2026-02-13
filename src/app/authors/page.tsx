@@ -82,6 +82,12 @@ export default function AuthorsPage() {
                 &nbsp;&nbsp;&quot;github&quot;:
                 &quot;your-github-username&quot;,
                 <br />
+                &nbsp;&nbsp;&quot;website&quot;:
+                &quot;https://yourwebsite.com&quot;,
+                <br />
+                &nbsp;&nbsp;&quot;linkedIn&quot;:
+                &quot;https://linkedin.com/in/yourprofile&quot;,
+                <br />
                 &nbsp;&nbsp;&quot;contributions&quot;: [&quot;What you worked
                 on&quot;],
                 <br />
