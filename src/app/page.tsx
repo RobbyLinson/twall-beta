@@ -16,13 +16,23 @@ export default async function Home() {
       {/* Navigation */}
       <nav className="border-b border-trinity-silver-200 bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-2xl font-bold text-trinity-blue-600"
-          >
-            <Mountain className="h-7 w-7" />
-            TWall Beta
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-2xl font-bold text-trinity-blue-600"
+            >
+              <Mountain className="h-7 w-7" />
+              TWall Beta
+            </Link>
+            <Link href="/authors">
+              <Button
+                variant="ghost"
+                className="text-trinity-silver-700 hover:text-trinity-blue-600"
+              >
+                Contribute
+              </Button>
+            </Link>
+          </div>
 
           <div className="flex items-center gap-4">
             <Link href="/climbs">
