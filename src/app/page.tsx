@@ -104,7 +104,10 @@ export default async function Home() {
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 max-w-5xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow">
+          <Link
+            href="/climbs"
+            className="block bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow"
+          >
             <div className="w-12 h-12 bg-trinity-blue-100 rounded-lg flex items-center justify-center mb-4">
               <Mountain className="h-6 w-6 text-trinity-blue-600" />
             </div>
@@ -117,9 +120,12 @@ export default async function Home() {
             <p className="text-sm text-trinity-silver-500 mt-2">
               Organized by rope letter and color
             </p>
-          </div>
+          </Link>
 
-          <div className="bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow">
+          <Link
+            href="/climbs"
+            className="block bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow"
+          >
             <div className="w-12 h-12 bg-trinity-silver-100 rounded-lg flex items-center justify-center mb-4">
               <Star className="h-6 w-6 text-trinity-silver-600" />
             </div>
@@ -130,9 +136,12 @@ export default async function Home() {
             <p className="text-sm text-trinity-silver-500 mt-2">
               Multiple routes per rope
             </p>
-          </div>
+          </Link>
 
-          <div className="bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow">
+          <Link
+            href="/climbs"
+            className="block bg-white p-8 rounded-xl shadow-lg border border-trinity-blue-100 hover:shadow-xl transition-shadow"
+          >
             <div className="w-12 h-12 bg-trinity-blue-100 rounded-lg flex items-center justify-center mb-4">
               <Users className="h-6 w-6 text-trinity-blue-600" />
             </div>
@@ -145,7 +154,7 @@ export default async function Home() {
             <p className="text-sm text-trinity-silver-500 mt-2">
               Shared by climbers, for climbers
             </p>
-          </div>
+          </Link>
         </div>
       </main>
     </div>
