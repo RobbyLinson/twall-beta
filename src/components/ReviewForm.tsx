@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Star } from "lucide-react";
+import { Star, ChevronsUp, ChevronUp } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
 interface ReviewFormProps {
@@ -19,6 +19,7 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
+  const [style, setStyle] = useState<"top-rope" | "lead">("top-rope");
   const [comment, setComment] = useState("");
   const [beta, setBeta] = useState("");
   const [suggestedGrade, setSuggestedGrade] = useState("");
@@ -35,6 +36,15 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
       return;
     }
 
+    if (!style) {
+      toast({
+        title: "Style required",
+        description: "Please select top-rope or lead",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -44,6 +54,7 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
         body: JSON.stringify({
           climbId,
           rating,
+          style,
           comment: comment.trim() || null,
           beta: beta.trim() || null,
           suggestedGrade: suggestedGrade.trim() || null,
@@ -56,6 +67,7 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
           description: "Thanks for sharing your beta",
         });
         setRating(0);
+        setStyle("top-rope");
         setComment("");
         setSuggestedGrade("");
         router.refresh();
@@ -105,6 +117,39 @@ export default function ReviewForm({ climbId }: ReviewFormProps) {
               />
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* Climb Style */}
+      <div>
+        <Label className="text-trinity-blue-700 font-semibold mb-2 block">
+          Climb Style *
+        </Label>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => setStyle("top-rope")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${
+              style === "top-rope"
+                ? "border-trinity-blue-500 bg-trinity-blue-50 text-trinity-blue-700"
+                : "border-trinity-silver-200 text-trinity-silver-500 hover:border-trinity-silver-300"
+            }`}
+          >
+            <ChevronUp className="h-5 w-5" />
+            <span className="font-medium">Top-Rope</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setStyle("lead")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${
+              style === "lead"
+                ? "border-trinity-blue-500 bg-trinity-blue-50 text-trinity-blue-700"
+                : "border-trinity-silver-200 text-trinity-silver-500 hover:border-trinity-silver-300"
+            }`}
+          >
+            <ChevronsUp className="h-5 w-5" />
+            <span className="font-medium">Lead</span>
+          </button>
         </div>
       </div>
 

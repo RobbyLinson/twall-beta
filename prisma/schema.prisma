@@ -39,6 +39,7 @@ model Climb {
 model Review {
   id        String   @id @default(cuid())
   rating    Int      // 1-5 stars
+  style     String
   comment   String?
   beta      String?
   suggestedGrade String? // User's opinion on grade (might differ from official)

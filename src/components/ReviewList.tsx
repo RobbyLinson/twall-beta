@@ -1,12 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Star, User, Calendar, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Star,
+  User,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  ChevronsUp,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Review {
   id: string;
   rating: number;
+  style: string;
   comment?: string | null;
   beta?: string | null;
   suggestedGrade?: string | null;
@@ -45,6 +53,14 @@ export default function ReviewsList({ reviews }: { reviews: Review[] }) {
               <User className="h-5 w-5 text-trinity-silver-400" />
               <span className="font-semibold text-trinity-silver-700">
                 {review.user.username || review.user.email.split("@")[0]}
+              </span>
+              <span className="flex items-center gap-1 text-xs text-trinity-silver-500 bg-trinity-silver-100 px-2 py-0.5 rounded-full">
+                {review.style === "lead" ? (
+                  <ChevronsUp className="h-3 w-3" />
+                ) : (
+                  <ChevronUp className="h-3 w-3" />
+                )}
+                {review.style === "lead" ? "Lead" : "Top-Rope"}
               </span>
             </div>
             <div className="flex items-center gap-1">

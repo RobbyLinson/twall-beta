@@ -10,6 +10,7 @@ export interface Climb {
 export interface Review {
   id: string;
   rating: number; // 1-5
+  style: string; // "top-rope" or "lead"
   comment?: string | null;
   beta?: string | null; // User's tips or advice for the climb
   suggestedGrade?: string | null; // User's opinion on the grade

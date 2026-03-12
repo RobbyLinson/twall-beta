@@ -11,12 +11,19 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { climbId, rating, comment, beta, suggestedGrade } = body;
+    const { climbId, rating, style, comment, beta, suggestedGrade } = body;
 
     // Validation
-    if (!climbId || !rating) {
+    if (!climbId || !rating || !style) {
       return NextResponse.json(
         { error: "Missing required fields" },
+        { status: 400 },
+      );
+    }
+
+    if (style !== "top-rope" && style !== "lead") {
+      return NextResponse.json(
+        { error: "Style must be 'top-rope' or 'lead'" },
         { status: 400 },
       );
     }
@@ -59,6 +66,7 @@ export async function POST(request: Request) {
       },
       update: {
         rating,
+        style,
         comment: comment || null,
         beta: beta || null,
         suggestedGrade: suggestedGrade || null,
@@ -67,6 +75,7 @@ export async function POST(request: Request) {
         climbId,
         userId: dbUser.id,
         rating,
+        style,
         comment: comment || null,
         beta: beta || null,
         suggestedGrade: suggestedGrade || null,
